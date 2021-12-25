@@ -1,1 +1,1 @@
-init :- button('hello').
+init :- div('heyo') , button('bruh').

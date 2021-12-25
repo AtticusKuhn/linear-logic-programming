@@ -26,36 +26,62 @@
         "exprs": []
       },
       "x2": {
-        "type": "term",
-        "atom": {
-          "type": "atom",
-          "value": "button",
-          "text": "button",
-          "offset": 8,
+        "type": "xfx",
+        "operator": {
+          "type": "xfx",
+          "value": ",",
+          "text": ",",
+          "offset": 20,
           "lineBreaks": 0,
           "line": 1,
-          "col": 9
+          "col": 21
         },
-        "exprs": [
-          {
-            "type": "string",
-            "value": "'hello'",
-            "text": "'hello'",
-            "offset": 15,
+        "x1": {
+          "type": "term",
+          "atom": {
+            "type": "atom",
+            "value": "div",
+            "text": "div",
+            "offset": 8,
             "lineBreaks": 0,
             "line": 1,
-            "col": 16
+            "col": 9
           },
-          {
-            "type": "rparen",
-            "value": ")",
-            "text": ")",
+          "exprs": [
+            {
+              "type": "string",
+              "value": "'heyo'",
+              "text": "'heyo'",
+              "offset": 12,
+              "lineBreaks": 0,
+              "line": 1,
+              "col": 13
+            }
+          ]
+        },
+        "x2": {
+          "type": "term",
+          "atom": {
+            "type": "atom",
+            "value": "button",
+            "text": "button",
             "offset": 22,
             "lineBreaks": 0,
             "line": 1,
             "col": 23
-          }
-        ]
+          },
+          "exprs": [
+            {
+              "type": "string",
+              "value": "'bruh'",
+              "text": "'bruh'",
+              "offset": 29,
+              "lineBreaks": 0,
+              "line": 1,
+              "col": 30
+            }
+          ]
+        }
       }
     }
   }

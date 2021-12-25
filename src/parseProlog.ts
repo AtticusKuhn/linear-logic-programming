@@ -75,7 +75,9 @@ const compileExpr: compiler<Expr> = (expr) => {
         }
         return `${compileExpr(expr.x1)} ${expr.operator} ${compileExpr(expr.x2)} `
     } else if (expr.type === "term") {
+        expr.exprs = expr.exprs.flat(1)
         if (expr.exprs.length > 0) {
+            console.log("the exprs are", expr.exprs)
             return `${expr.atom}(${expr.exprs.map(compileExpr)})`
         } else {
             return expr.atom
@@ -89,7 +91,7 @@ const compileExpr: compiler<Expr> = (expr) => {
 }
 const compileRule: compiler<Rule> = (rule) => {
     const { expr } = rule
-    return compileExpr(expr)
+    return compileExpr(expr) + "."
 }
 const compileAST: compiler<AST> = (ast) => {
     return ast.map(compileRule).join("\n")
@@ -101,6 +103,22 @@ const main = () => {
     const str = compileAST(ast)
     const header = fs.readFileSync("header.pl", "utf-8")
     console.log("compiled successfully")
-    fs.writeFileSync("./compiled-prolog.pl", header + "\n\n\n" + str)
+    const full = header + "\n\n\n" + str
+    fs.writeFileSync("./compiled-prolog.pl", full)
+    fs.writeFileSync("./index.html", `
+    <script type="text/prolog" id="prolog.pl">
+    ${full}
+    </script>
+    <div id="main"></div>
+    <script type="text/javascript" src="node_modules/tau-prolog/modules/core.js"></script>
+    <script type="text/javascript" src="node_modules/tau-prolog/modules/dom.js"></script>
+    <script type="text/javascript">
+        var session = pl.create(1000);
+        session.consult("prolog.pl", (error) => console.log(error));
+        session.query("init.");
+        session.answer((answer) => {
+            console.log(answer)
+        });
+    </script>`)
 }
 main()

@@ -16,9 +16,9 @@ Term -> %atom Term2:? {%(d)=>({
     atom:d[0],
     exprs:d[1] || [],
 })%} 
-Term2 -> %lparen Expr Term3 {%d=>[d[1], d[2]]%}
-Term3 -> (%comma Expr Term3) {%d=>[d[1], d[2]]%}
-    | %rparen {%id%}
+Term2 -> %lparen Expr Term3 {%d=>[d[1], ...d[2]]%}
+Term3 -> ws Expr Term3 {%d=>[d[1], d[2]]%}
+    | %rparen {%d=>[]%}
 # Term -> %atom %lparen Expr %rparen 
 Expr ->  
 # %fx  ws Expr 

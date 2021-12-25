@@ -1,38 +1,33 @@
-<!-- Program -->
-<script type="text/prolog" src="./compiled-prolog.pl" id="prolog.pl">
+
+    <script type="text/prolog" id="prolog.pl">
     :- use_module(library(dom)).
 
-    button(X) :-
-        create(li, LI),
-        add_class(LI, 'list-group-item'), % Style
-        html(LI, X),
-        get_by_id('main', Parent),
-        append_child(Parent, LI).
-    
-    
-    init :- button('hello').
-    hello(1).
-</script>
+button(X) :-
+    create(button, LI),
+    add_class(LI, 'list-group-item'), % Style
+    html(LI, X),
+    get_by_id('main', Parent),
+    append_child(Parent, LI).
+
+div(X) :-
+    create(div, LI),
+    add_class(LI, 'list-group-item'), % Style
+    html(LI, X),
+    get_by_id('main', Parent),
+    append_child(Parent, LI).
 
 
 
-<div id="main">
-
-</div>
-
-<script type="text/javascript" src="node_modules/tau-prolog/modules/core.js"></script>
-<script type="text/javascript" src="node_modules/tau-prolog/modules/dom.js"></script>
-
-<script type="text/javascript">
-    // Create session
-    var session = pl.create(1000);
-    // Consult program
-    session.consult("prolog.pl", (error) => console.log(error));
-    // Query goal
-    session.query("init.");
-    // Find answers
-    session.answer((answer) => {
-        console.log(answer)
-        // document.getElementById("main").innerText = answer
-    });
-</script>
+init :- div('heyo') , button('bruh')  .
+    </script>
+    <div id="main"></div>
+    <script type="text/javascript" src="node_modules/tau-prolog/modules/core.js"></script>
+    <script type="text/javascript" src="node_modules/tau-prolog/modules/dom.js"></script>
+    <script type="text/javascript">
+        var session = pl.create(1000);
+        session.consult("prolog.pl", (error) => console.log(error));
+        session.query("init.");
+        session.answer((answer) => {
+            console.log(answer)
+        });
+    </script>
