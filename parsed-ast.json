@@ -1,0 +1,62 @@
+[
+  {
+    "type": "rule",
+    "expr": {
+      "type": "xfx",
+      "operator": {
+        "type": "xfx",
+        "value": ":-",
+        "text": ":-",
+        "offset": 5,
+        "lineBreaks": 0,
+        "line": 1,
+        "col": 6
+      },
+      "x1": {
+        "type": "term",
+        "atom": {
+          "type": "atom",
+          "value": "init",
+          "text": "init",
+          "offset": 0,
+          "lineBreaks": 0,
+          "line": 1,
+          "col": 1
+        },
+        "exprs": []
+      },
+      "x2": {
+        "type": "term",
+        "atom": {
+          "type": "atom",
+          "value": "button",
+          "text": "button",
+          "offset": 8,
+          "lineBreaks": 0,
+          "line": 1,
+          "col": 9
+        },
+        "exprs": [
+          {
+            "type": "string",
+            "value": "'hello'",
+            "text": "'hello'",
+            "offset": 15,
+            "lineBreaks": 0,
+            "line": 1,
+            "col": 16
+          },
+          {
+            "type": "rparen",
+            "value": ")",
+            "text": ")",
+            "offset": 22,
+            "lineBreaks": 0,
+            "line": 1,
+            "col": 23
+          }
+        ]
+      }
+    }
+  }
+]
